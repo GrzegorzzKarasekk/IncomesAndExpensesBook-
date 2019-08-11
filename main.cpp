@@ -1,10 +1,12 @@
 #include <iostream>
-//#include "KsiazkaAdresowa.h"
+#include "ManagementOfBilancesBook.h"
 
 using namespace std;
 
 int main()
 {
+    ManagementOfBilancesBook managementOfBilancesBook;
+    managementOfBilancesBook.userRegistration();
 
     return 0;
 }
