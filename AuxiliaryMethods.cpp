@@ -1,13 +1,13 @@
 #include "AuxiliaryMethods.h"
-/*
-string MetodyPomocnicze::konwerjsaIntNaString(int liczba)
+
+string AuxiliaryMethods::conversionINTToSTRING(int number)
 {
     ostringstream ss;
-    ss << liczba;
+    ss << number;
     string str = ss.str();
     return str;
 }
-*/
+
 string AuxiliaryMethods::loadTheLine()
 {
     string enter = "";
@@ -15,7 +15,7 @@ string AuxiliaryMethods::loadTheLine()
     return enter;
 }
 
-char AuxiliaryMethods::LoadTheSign()
+char AuxiliaryMethods::loadTheSign()
 {
     string enter = "";
     char sign = {0};
@@ -34,7 +34,7 @@ char AuxiliaryMethods::LoadTheSign()
     return sign;
 }
 
-string AuxiliaryMethods::changetheFirstLetterToCapitalAndTheRestToLower(string text)
+string AuxiliaryMethods::changeTheFirstLetterToCapitalAndTheRestToLower(string text)
 {
     if (!text.empty())
     {

@@ -3,14 +3,22 @@
 
 #include <iostream>
 #include "UserManager.h"
+#include "Markup.h"
+
 
 using namespace std;
 
 class ManagementOfBilancesBook
 {
     UserManager userManager;
+    //const string NAME_OF_THE_FILE_WITH_USERS;
+
 
 public:
+    ManagementOfBilancesBook(string nameOfTheFileWithUsers)
+    : userManager(nameOfTheFileWithUsers){};
+    ~ManagementOfBilancesBook()
+    {};
 
     void userRegistration();
 

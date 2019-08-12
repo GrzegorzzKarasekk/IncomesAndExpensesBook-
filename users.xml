@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Users>
+<User>
+<UserId>1</UserId>
+<Login>Grzesko</Login>
+<Password>123</Password>
+<Name>Grzegorz</Name>
+<Surname>Karasek</Surname>
+</User>
+<User>
+<UserId>2</UserId>
+<Login>Franko</Login>
+<Password>123</Password>
+<Name>Franek</Name>
+<Surname>Dolas</Surname>
+</User>
+</Users>

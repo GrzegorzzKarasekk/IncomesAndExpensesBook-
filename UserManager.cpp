@@ -4,6 +4,7 @@ void UserManager::userRegistration()
 {
     User user = setDataNewUser();
     users.push_back(user);
+    fileWithUsers.addUserOnToFile(user);
 
     cout << endl << "Account has been successfully created " << endl << endl;
     system("pause");
@@ -36,6 +37,7 @@ User UserManager::setDataNewUser()
     {
         cout << "GIVE YOUR NAME: ";
         name = AuxiliaryMethods::loadTheLine();
+        name = AuxiliaryMethods::changeTheFirstLetterToCapitalAndTheRestToLower(name);
         user.setName(name);
     } while (isTheFieldEmpty(name) == true);
 
@@ -44,6 +46,7 @@ User UserManager::setDataNewUser()
     {
         cout << "GIVE YOUR SURNAME: ";
         surname = AuxiliaryMethods::loadTheLine();
+        surname = AuxiliaryMethods::changeTheFirstLetterToCapitalAndTheRestToLower(surname);
         user.setSurname(surname);
     } while (isTheFieldEmpty(surname) == true);
 

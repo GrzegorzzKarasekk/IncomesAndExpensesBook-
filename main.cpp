@@ -5,7 +5,8 @@ using namespace std;
 
 int main()
 {
-    ManagementOfBilancesBook managementOfBilancesBook;
+    ManagementOfBilancesBook managementOfBilancesBook("Users.xml");
+    managementOfBilancesBook.userRegistration();
     managementOfBilancesBook.userRegistration();
 
     return 0;
