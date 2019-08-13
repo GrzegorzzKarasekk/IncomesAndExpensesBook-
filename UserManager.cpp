@@ -100,3 +100,97 @@ bool UserManager::isThisSamePassword(string password)
         return true;
 }
 
+void UserManager::userLogging()
+{
+    string login = "", password = "";
+    cout << endl << "Enter the login: ";
+    login = AuxiliaryMethods::loadTheLine();
+
+    for(int i = 0; i < users.size(); i++)
+    {
+        if(users[i].getLogin() == login)
+        {
+            for (int iloscProb = 3; iloscProb > 0; iloscProb --)
+            {
+                cout << "Enter the password. You have " << iloscProb << " attempts: ";
+                password = AuxiliaryMethods::loadTheLine();
+
+                if (users[i].getPassword() == password)
+                {
+                    idOfLoggedUser = users[i].getUserId();
+                    cout << endl << "You are log in." << endl <<endl;
+                    system("pause");
+                    return;
+                }
+            }
+            cout << "Wrong password entered 3 times" << endl;
+            system("pause");
+            return;
+        }
+    }
+    cout << "Bad login or missing user" << endl;
+    system("pause");
+    return;
+}
+
+void UserManager::showAllUsers()
+{
+    for (int i = 0; i < users.size(); i++)
+    {
+        cout << users[i].getUserId() << endl;
+        cout << users[i].getLogin() << endl;
+        cout << users[i].getPassword() << endl;
+        cout << users[i].getName() << endl;
+        cout << users[i].getSurname() << endl;
+    }
+}
+
+void UserManager::logOffTheUser()
+{
+    idOfLoggedUser = 0;
+}
+
+bool UserManager::isTheUserLogged()
+{
+    if (idOfLoggedUser > 0)
+        return true;
+    else
+        return false;
+}
+
+bool UserManager::isTheVectorOfUsersEmpty()
+{
+    if(users.empty() == true)
+        {
+            cout << "NO USERS :(" << endl;
+            system("pause");
+            return true;
+        }
+    else
+        return false;
+}
+
+char UserManager::choseTheOptionFromTheUserMenu()
+{
+    char choice;
+
+    system("cls");
+    cout << " >>> USER MENU <<<" << endl;
+    cout << "---------------------------" << endl;
+    cout << "1. ADD INCOME" << endl;
+    cout << "2. ADD EXPENSE" << endl;
+    cout << "3. SHOW THE BILANCE FROM THIS MONTH" << endl;
+    cout << "4. SHOW THE BILANCE FROM PREVIOUS MONTH" << endl;
+    cout << "5. SHOW THE BILANCE FROM PEROID" << endl;
+    cout << "6. EDIT THE INCOME" << endl;
+    cout << "7. EDIT THE EXPENSE" << endl;
+    cout << "---------------------------" << endl;
+    cout << "8. CHANGE THE PASSWORD" << endl;
+    cout << "9. LOG OFF" << endl;
+    cout << "---------------------------" << endl;
+    cout << "YOUR CHOICE: ";
+    choice = AuxiliaryMethods::loadTheSign();
+
+    return choice;
+}
+

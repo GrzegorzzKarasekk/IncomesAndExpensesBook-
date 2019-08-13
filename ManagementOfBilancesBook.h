@@ -19,9 +19,14 @@ public:
     : userManager(nameOfTheFileWithUsers){};
     ~ManagementOfBilancesBook()
     {};
-
     void userRegistration();
-
+    void userLogging();
+    void showAllUsers();
+    void logOffTheUser();
+    char choseTheOptionFromMainMenu();
+    bool isTheUserLogged();
+    bool isTheVectorOfUsersEmpty();
+    char choseTheOptionFromTheUserMenu();
 
 };
 

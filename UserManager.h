@@ -28,6 +28,12 @@ public:
     idOfLoggedUser = 0;
     }
     void userRegistration();
+    void userLogging();
+    void logOffTheUser();
+    void showAllUsers();
+    char choseTheOptionFromTheUserMenu();
+    bool isTheUserLogged();
+    bool isTheVectorOfUsersEmpty();
 
 };
 
