@@ -2,6 +2,8 @@
 
 void FileWithUsers::addUserOnToFile(User user)
 {
+    CMarkup xml;
+
     bool fileExist = xml.Load("users.xml");
     if(!fileExist)
     {
@@ -35,28 +37,55 @@ string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowym
 
     return liniaZDanymiUzytkownika;
 }
-
-vector <Uzytkownik> PlikZUzytkownikami::wczytajUzytkownikowZPliku()
+*/
+vector <User> FileWithUsers::loadUsersFromTheFile()
 {
-    Uzytkownik uzytkownik;
-    vector <Uzytkownik> uzytkownicy;
-    fstream plikTekstowy;
-    string daneJednegoUzytkownikaOddzielonePionowymiKreskami = "";
-
-    plikTekstowy.open(pobierzNazwePliku().c_str(), ios::in);
-
-    if (plikTekstowy.good() == true)
+    CMarkup xml;
+    User user;
+    vector <User> users;
+    bool fileExist = xml.Load("users.xml");
+    if(!fileExist)
     {
-        while (getline(plikTekstowy, daneJednegoUzytkownikaOddzielonePionowymiKreskami))
-        {
-            uzytkownik = pobierzDaneUzytkownika(daneJednegoUzytkownikaOddzielonePionowymiKreskami);
-            uzytkownicy.push_back(uzytkownik);
-        }
-        plikTekstowy.close();
+        cout << endl << "The file users.xml is empty. No users :( " << endl;
+        system("pause");
     }
-    return uzytkownicy;
-}
+    else
+    {
+        int userId = 0;
+        string login = "", password = "", name = "", surname = "";
 
+        while(xml.FindChildElem("User"))
+        {
+            xml.IntoElem();
+            xml.FindChildElem( "UserId" );
+            userId = atoi( xml.GetChildData().c_str() );
+            user.setUserId(userId);
+
+            xml.FindChildElem( "Login" );
+            login = xml.GetChildData();
+            user.setLogin(login);
+
+            xml.FindChildElem( "Password" );
+            password = xml.GetChildData();
+            user.setPassword(password);
+
+            xml.FindChildElem( "Name" );
+            name = xml.GetChildData();
+            user.setName(name);
+
+            xml.FindChildElem( "Surname" );
+            surname = xml.GetChildData();
+            user.setSurname(surname);
+
+            users.push_back(user);
+            xml.OutOfElem();
+
+        }
+        return users;
+
+    }
+}
+/*
 Uzytkownik PlikZUzytkownikami::pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami)
 {
     Uzytkownik uzytkownik;
