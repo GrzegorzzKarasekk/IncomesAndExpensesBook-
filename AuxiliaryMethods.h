@@ -4,6 +4,8 @@
 #include <iostream>
 #include <sstream>
 #include <algorithm>
+#include <string>
+#include <cstdlib>
 
 using namespace std;
 
@@ -14,8 +16,10 @@ public:
     static string loadTheLine();
     static char loadTheSign();
     static string changeTheFirstLetterToCapitalAndTheRestToLower(string text);
+	static float conversionSTRINGToFLOAT(string text);
+	static int conversionSTRINGToINT(string text);
+    static string findAndChangeCommaToPeroidInText( string text);
     //static string pobierzLiczbe(string tekst, int pozycjaZnaku);
-    //static int konwersjaStringNaInt(string liczba);
     //static int wczytajLiczbeCalkowita();
 
 };

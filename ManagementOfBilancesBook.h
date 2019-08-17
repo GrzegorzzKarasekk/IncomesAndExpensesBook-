@@ -3,8 +3,7 @@
 
 #include <iostream>
 #include "UserManager.h"
-#include "Markup.h"
-
+#include "BilanceManager.h"
 
 using namespace std;
 
@@ -12,13 +11,20 @@ class ManagementOfBilancesBook
 {
     UserManager userManager;
     //const string NAME_OF_THE_FILE_WITH_USERS;
-
+    BilanceManager *bilanceManager;
 
 public:
     ManagementOfBilancesBook(string nameOfTheFileWithUsers)
-    : userManager(nameOfTheFileWithUsers){};
+    : userManager(nameOfTheFileWithUsers)
+    {
+        bilanceManager = NULL;
+    };
+
     ~ManagementOfBilancesBook()
-    {};
+    {
+        delete bilanceManager;
+        bilanceManager = NULL;
+    };
     void userRegistration();
     void userLogging();
     void showAllUsers();
@@ -27,6 +33,7 @@ public:
     bool isTheUserLogged();
     bool isTheVectorOfUsersEmpty();
     char choseTheOptionFromTheUserMenu();
+    void addIncome();
 
 };
 

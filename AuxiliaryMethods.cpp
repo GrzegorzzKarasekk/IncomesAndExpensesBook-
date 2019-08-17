@@ -43,6 +43,32 @@ string AuxiliaryMethods::changeTheFirstLetterToCapitalAndTheRestToLower(string t
     }
     return text;
 }
+
+float AuxiliaryMethods::conversionSTRINGToFLOAT(string text)
+{
+    float numberFloat;
+    numberFloat = (float)atof(text.c_str());
+
+    return numberFloat;
+}
+
+string AuxiliaryMethods::findAndChangeCommaToPeroidInText(string text)
+{
+    string peroid = ".";
+    int position = 0;
+
+    if(text.find(","))
+    {
+        position = text.find( ',' );
+        text.replace(position, 1, peroid);
+        return text;
+    }
+    else
+        return text;
+
+}
+
+
 /*
 string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku)
 {
@@ -54,16 +80,20 @@ string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku)
     }
     return liczba;
 }
-
-int MetodyPomocnicze::konwersjaStringNaInt(string liczba)
+*/
+int AuxiliaryMethods::conversionSTRINGToINT(string text)
 {
-    int liczbaInt;
-    istringstream iss(liczba);
-    iss >> liczbaInt;
+    //int numberInt;
+    //numberInt = atoi(text.c_str());
 
-    return liczbaInt;
+    //return numberInt;
+    int numberInt;
+	istringstream iss(text);
+    iss >> numberInt;
+
+    return numberInt;
 }
-
+/*
 int MetodyPomocnicze::wczytajLiczbeCalkowita()
 {
     string wejscie = "";

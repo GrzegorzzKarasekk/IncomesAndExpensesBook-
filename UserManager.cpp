@@ -194,3 +194,7 @@ char UserManager::choseTheOptionFromTheUserMenu()
     return choice;
 }
 
+int UserManager::getIdOfLoggedUser()
+{
+    return idOfLoggedUser;
+}
