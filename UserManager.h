@@ -35,6 +35,7 @@ public:
     char choseTheOptionFromTheUserMenu();
     bool isTheUserLogged();
     bool isTheVectorOfUsersEmpty();
+    int getIdOfLoggedUser();
 
 };
 

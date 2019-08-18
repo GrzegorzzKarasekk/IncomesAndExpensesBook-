@@ -3,4 +3,6 @@ obj/
 plan/
 IncomesAndExpensesBook.*
 users.xml
+incomes.xml
+expenses.xml
 

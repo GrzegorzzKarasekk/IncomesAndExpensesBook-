@@ -26,18 +26,7 @@ void FileWithUsers::addUserOnToFile(User user)
 
     xml.Save("users.xml");
 }
-/*
-string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik)
-{
-    string liniaZDanymiUzytkownika = "";
 
-    liniaZDanymiUzytkownika += MetodyPomocnicze::konwerjsaIntNaString(uzytkownik.pobierzId())+ '|';
-    liniaZDanymiUzytkownika += uzytkownik.pobierzLogin() + '|';
-    liniaZDanymiUzytkownika += uzytkownik.pobierzHaslo() + '|';
-
-    return liniaZDanymiUzytkownika;
-}
-*/
 vector <User> FileWithUsers::loadUsersFromTheFile()
 {
     CMarkup xml;
@@ -46,7 +35,7 @@ vector <User> FileWithUsers::loadUsersFromTheFile()
     bool fileExist = xml.Load("users.xml");
     if(!fileExist)
     {
-        cout << endl << "The file users.xml is empty. No users :( " << endl;
+        cout << endl << "The file users.xml don't exist. No users :( " << endl;
         system("pause");
     }
     else
