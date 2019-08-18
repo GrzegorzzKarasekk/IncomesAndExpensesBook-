@@ -14,7 +14,7 @@ void UserOperaction::setDate(int newDate)
 {
     date = newDate;
 }
-void UserOperaction::setAmount(float newAmount)
+void UserOperaction::setAmount(double newAmount)
 {
     amount = newAmount;
 }
@@ -30,7 +30,7 @@ int UserOperaction::getDate()
 {
    return date;
 }
-float UserOperaction::getAmount()
+double UserOperaction::getAmount()
 {
    return amount;
 }

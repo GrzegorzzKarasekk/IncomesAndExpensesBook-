@@ -10,7 +10,7 @@ void ManagementOfBilancesBook::userLogging()
     userManager.userLogging();
     if( userManager.isTheUserLogged())
     {
-       bilanceManager = new BilanceManager(userManager.getIdOfLoggedUser());
+       bilanceManager = new BilanceManager(NAME_OF_THE_FILE_WITH_INCOMES, userManager.getIdOfLoggedUser());
     }
 }
 

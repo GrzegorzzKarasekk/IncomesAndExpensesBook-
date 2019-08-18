@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     char choice;
-    ManagementOfBilancesBook managementOfBilancesBook("Users.xml");
+    ManagementOfBilancesBook managementOfBilancesBook("Users.xml","Incomes.xml");
 
     while (true)
     {

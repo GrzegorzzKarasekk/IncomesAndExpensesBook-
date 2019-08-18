@@ -1,13 +1,5 @@
 #include "AuxiliaryMethods.h"
 
-string AuxiliaryMethods::conversionINTToSTRING(int number)
-{
-    ostringstream ss;
-    ss << number;
-    string str = ss.str();
-    return str;
-}
-
 string AuxiliaryMethods::loadTheLine()
 {
     string enter = "";
@@ -44,30 +36,77 @@ string AuxiliaryMethods::changeTheFirstLetterToCapitalAndTheRestToLower(string t
     return text;
 }
 
-float AuxiliaryMethods::conversionSTRINGToFLOAT(string text)
+string AuxiliaryMethods::conversionINTToSTRING(int number)
 {
-    float numberFloat;
-    numberFloat = (float)atof(text.c_str());
+    ostringstream ss;
+    ss << number;
+    string str = ss.str();
+    return str;
+}
 
-    return numberFloat;
+string AuxiliaryMethods::conversionDOUBLEToSTRING(double numberDouble)
+{
+    stringstream stream;
+    stream << std::fixed << setprecision(2) << numberDouble;
+    string str = stream.str();
+        // print results
+    return str;
+}
+
+
+double AuxiliaryMethods::conversionSTRINGToDOUBLE(string text)
+{
+    float numberDouble;
+    string text2 = "";
+    istringstream isstream(text);
+    isstream >> numberDouble;
+    numberDouble = precisionToTwoDecimalPlaces(numberDouble);
+    if(isstream.fail())
+    {
+        // handle errors
+        cout << "Error while converting string to double" << endl;
+        cout << "Set correct amount (For example 20.25)" << endl;
+        cin >> text2;
+
+        conversionSTRINGToDOUBLE(text2);
+    }
+    else
+        // print results
+        return numberDouble;
+}
+
+double AuxiliaryMethods::precisionToTwoDecimalPlaces(double numberDouble)
+{
+    return round(numberDouble*100)/100;
+}
+
+int AuxiliaryMethods::conversionSTRINGToINT(string text)
+{
+    //int numberInt;
+    //numberInt = atoi(text.c_str());
+
+    //return numberInt;
+    int numberInt;
+	istringstream iss(text);
+    iss >> numberInt;
+
+    return numberInt;
 }
 
 string AuxiliaryMethods::findAndChangeCommaToPeroidInText(string text)
 {
     string peroid = ".";
-    int position = 0;
-
-    if(text.find(","))
+    int position = text.find(",");
+    if(position == string::npos)
     {
-        position = text.find( ',' );
-        text.replace(position, 1, peroid);
         return text;
     }
     else
-        return text;
-
+    {
+        text.replace(position, 1, peroid);
+		return text;
+    }
 }
-
 
 /*
 string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku)
@@ -81,18 +120,8 @@ string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku)
     return liczba;
 }
 */
-int AuxiliaryMethods::conversionSTRINGToINT(string text)
-{
-    //int numberInt;
-    //numberInt = atoi(text.c_str());
 
-    //return numberInt;
-    int numberInt;
-	istringstream iss(text);
-    iss >> numberInt;
 
-    return numberInt;
-}
 /*
 int MetodyPomocnicze::wczytajLiczbeCalkowita()
 {

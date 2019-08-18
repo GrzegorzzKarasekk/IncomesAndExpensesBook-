@@ -110,7 +110,9 @@ bool DateManager::isTheDateGood(string dateTemp)
         }
         else
             return false;
-}
+    }
+    else
+        return false;
 }
 
 int DateManager::howManyDaysAMonth(int year, int month, int day)
@@ -134,4 +136,13 @@ int DateManager::howManyDaysAMonth(int year, int month, int day)
     }
 
     return daysInMonth;
+}
+
+string DateManager::conversionINTToDateInString(int intDate)
+{
+    string date =  AuxiliaryMethods::conversionINTToSTRING(intDate);
+    date.insert( 4,"-" );
+    date.insert( 7,"-" );
+
+    return date;
 }

@@ -4,13 +4,12 @@
 #include <iostream>
 #include <vector>
 #include <conio.h>
-//#include <windows.h>
 #include <sstream>
 
 #include "Income.h"
 #include "AuxiliaryMethods.h"
 #include "DateManager.h"
-//#include "FileWithIncomes.h"
+#include "FileWithIncomes.h"
 
 using namespace std;
 
@@ -18,17 +17,18 @@ class BilanceManager
 {
     int const ID_OF_LOGGED_USER;
     vector <Income> incomes;
-    //FileWithIncomes fileWithIncomes;
+    FileWithIncomes fileWithIncomes;
 
 	Income addDataNewIncome();
 
 public:
-    BilanceManager(int idOfLoggedUser) : ID_OF_LOGGED_USER(idOfLoggedUser)
+    BilanceManager(string nameOfFileWithIncomes, int idOfLoggedUser )
+    : fileWithIncomes(nameOfFileWithIncomes), ID_OF_LOGGED_USER(idOfLoggedUser)
     {
-        ;
+        incomes = fileWithIncomes.loadTheIncomesOfLoggedUser(ID_OF_LOGGED_USER);
     }
     void addIncome();
-	void showIncomes();
+	void showAllIncomes();
 
 };
 

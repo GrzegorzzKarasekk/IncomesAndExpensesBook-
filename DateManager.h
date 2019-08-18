@@ -15,6 +15,7 @@ class DateManager
     static string getCurrentTime();
     static bool isTheDateGood(string dateTemp);
     static int howManyDaysAMonth(int year, int month, int day);
+    static string conversionINTToDateInString(int intDate);
 };
 
 #endif
