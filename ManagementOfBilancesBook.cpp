@@ -10,7 +10,7 @@ void ManagementOfBilancesBook::userLogging()
     userManager.userLogging();
     if( userManager.isTheUserLogged())
     {
-       bilanceManager = new BilanceManager(NAME_OF_THE_FILE_WITH_INCOMES, userManager.getIdOfLoggedUser());
+       bilanceManager = new BilanceManager(NAME_OF_THE_FILE_WITH_INCOMES,NAME_OF_THE_FILE_WITH_EXPENSES, userManager.getIdOfLoggedUser());
     }
 }
 
@@ -67,3 +67,16 @@ void ManagementOfBilancesBook::addIncome()
         cout << "To add operaction you must log in ;) " << endl;
     }
 }
+
+void ManagementOfBilancesBook::addExpense()
+{
+    if( userManager.isTheUserLogged())
+    {
+        bilanceManager->addExpense();
+    }
+    else
+    {
+        cout << "To add operaction you must log in ;) " << endl;
+    }
+}
+

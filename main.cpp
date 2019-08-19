@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     char choice;
-    ManagementOfBilancesBook managementOfBilancesBook("Users.xml","Incomes.xml");
+    ManagementOfBilancesBook managementOfBilancesBook("Users.xml","Incomes.xml","Expenses.xml");
 
     while (true)
     {
@@ -46,8 +46,7 @@ int main()
                 managementOfBilancesBook.addIncome();
                 break;
             case '2':
-               cout << endl << "This fuction isn't presently available" << endl << endl;
-                system("pause");
+                managementOfBilancesBook.addExpense();
                 break;
             case '3':
                 cout << endl << "This fuction isn't presently available" << endl << endl;

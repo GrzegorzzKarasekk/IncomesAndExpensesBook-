@@ -11,11 +11,12 @@ class ManagementOfBilancesBook
 {
     UserManager userManager;
     const string NAME_OF_THE_FILE_WITH_INCOMES;
+    const string NAME_OF_THE_FILE_WITH_EXPENSES;
     BilanceManager *bilanceManager;
 
 public:
-    ManagementOfBilancesBook(string nameOfTheFileWithUsers, string nameOfTheFileWithIncomes)
-    : userManager(nameOfTheFileWithUsers), NAME_OF_THE_FILE_WITH_INCOMES(nameOfTheFileWithIncomes)
+    ManagementOfBilancesBook(string nameOfTheFileWithUsers, string nameOfTheFileWithIncomes, string nameOfTheFileWithExpenses)
+    : userManager(nameOfTheFileWithUsers), NAME_OF_THE_FILE_WITH_INCOMES(nameOfTheFileWithIncomes),  NAME_OF_THE_FILE_WITH_EXPENSES(nameOfTheFileWithExpenses)
     {
         bilanceManager = NULL;
     };
@@ -35,6 +36,7 @@ public:
     char choseTheOptionFromTheUserMenu();
     void addIncome();
     void showAllIncomes();
+    void addExpense();
 
 };
 
