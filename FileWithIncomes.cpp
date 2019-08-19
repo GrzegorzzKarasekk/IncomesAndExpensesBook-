@@ -25,7 +25,7 @@ bool FileWithIncomes::addIncomeToFile(Income income)
     xml.AddElem("Amount",AuxiliaryMethods::conversionDOUBLEToSTRING(income.getAmount()));
     if(xml.Save("incomes.xml"))
     {
-        idOfLastoperaction ++;
+        idOfLastOperaction ++;
         return true;
     }
     else
@@ -95,7 +95,7 @@ vector <Income> FileWithIncomes::loadTheIncomesOfLoggedUser(int idOfLoggedUser)
 
         if (operactionIdString != "")
         {
-            idOfLastoperaction = lastUserOperactionId;
+            idOfLastOperaction = lastUserOperactionId;
             //cout <<"idOfLastoperaction " <<idOfLastoperaction << endl;
             //system("pause");
         }
@@ -106,5 +106,5 @@ vector <Income> FileWithIncomes::loadTheIncomesOfLoggedUser(int idOfLoggedUser)
 
 int FileWithIncomes::getIdOfLastOperaction()
 {
-    return idOfLastoperaction;
+    return idOfLastOperaction;
 }
