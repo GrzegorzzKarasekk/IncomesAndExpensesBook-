@@ -56,6 +56,11 @@ void ManagementOfBilancesBook::logOffTheUser()
     userManager.logOffTheUser();
 }
 
+void ManagementOfBilancesBook::showTheBilanceFromThisMonth()
+{
+    bilanceManager->showTheBilanceFromThisMonth();
+}
+
 void ManagementOfBilancesBook::addIncome()
 {
     if( userManager.isTheUserLogged())

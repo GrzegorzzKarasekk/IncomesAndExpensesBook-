@@ -43,14 +43,14 @@ string DateManager::getCurrentTime()
     return currentDate;
 }
 
-bool DateManager::isTheDateGood(string dateTemp)
+bool DateManager::isTheDateGood(string dateTemp, int currentINTDate)
 {
     char char1;
     char char2;
     string yearTemp = "";
     string monthTemp = "";
     string dayTemp ="";
-    int year, month, day;
+    int year, month, day, date;
     int daysInMonth;
 
     yearTemp.insert( 0, dateTemp, 0, 4 );
@@ -59,11 +59,20 @@ bool DateManager::isTheDateGood(string dateTemp)
     int stringLenght;
     char1 = dateTemp[4];
     char2 = dateTemp[7];
+
     stringLenght = dateTemp.length();
     if( !char1 == '-' && !char2 == '-' && !stringLenght == 10)
     {
         return false;
     }
+
+    date = DateManager::conversionDateFromSTRINGToINT(dateTemp);
+    if(date > currentINTDate)
+    {
+        cout << "This date is after currently date! Please set correct date" << endl;
+        return false;
+    }
+
 
     if( monthTemp[0] == 0)
         monthTemp = monthTemp[1];

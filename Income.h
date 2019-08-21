@@ -2,7 +2,10 @@
 #define INCOME_H
 
 #include <iostream>
+//#include <tuple>//tie
+
 #include "UserOperaction.h"
+
 using namespace std;
 
 class Income : public UserOperaction
@@ -18,6 +21,7 @@ public:
     void setNameOfIncome(string newNameOfIncome);
 
     string getNameOfIncome();
+    //friend bool operator<(const Income &s1, const Income &s2);
 };
 
 #endif

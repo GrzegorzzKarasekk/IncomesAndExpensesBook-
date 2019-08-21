@@ -13,7 +13,7 @@ class DateManager
 	public:
 	static int conversionDateFromSTRINGToINT(string dateTemp);
     static string getCurrentTime();
-    static bool isTheDateGood(string dateTemp);
+    static bool isTheDateGood(string dateTemp, int currentINTDate);
     static int howManyDaysAMonth(int year, int month, int day);
     static string conversionINTToDateInString(int intDate);
 };

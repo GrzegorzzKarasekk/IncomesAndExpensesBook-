@@ -49,8 +49,7 @@ int main()
                 managementOfBilancesBook.addExpense();
                 break;
             case '3':
-                cout << endl << "This fuction isn't presently available" << endl << endl;
-                system("pause");
+                managementOfBilancesBook.showTheBilanceFromThisMonth();
                 break;
             case '4':
                 cout << endl << "This fuction isn't presently available" << endl << endl;
