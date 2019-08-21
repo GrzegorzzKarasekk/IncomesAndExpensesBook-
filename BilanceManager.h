@@ -5,6 +5,7 @@
 #include <vector>
 #include <conio.h>
 #include <sstream>
+#include <algorithm>//sort
 
 #include "Income.h"
 #include "Expense.h"
@@ -12,6 +13,7 @@
 #include "DateManager.h"
 #include "FileWithIncomes.h"
 #include "FileWithExpenses.h"
+
 
 using namespace std;
 
@@ -37,6 +39,7 @@ public:
     }
     void addIncome();
     void addExpense();
+    void showTheBilanceFromThisMonth();
 };
 
 #endif

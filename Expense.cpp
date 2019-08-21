@@ -8,3 +8,4 @@ string Expense::getNameOfExpense()
 {
    return nameOfExpense;
 }
+
