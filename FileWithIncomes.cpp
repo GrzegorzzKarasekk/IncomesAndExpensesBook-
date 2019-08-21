@@ -18,7 +18,7 @@ bool FileWithIncomes::addIncomeToFile(Income income)
     }
     xml.AddElem("Income");
     xml.IntoElem();
-    xml.AddElem("OperactionId",AuxiliaryMethods::conversionINTToSTRING(income.getOperationId()));
+    xml.AddElem("OperactionId",AuxiliaryMethods::conversionINTToSTRING(income.getOperactionId()));
     xml.AddElem("UserId",AuxiliaryMethods::conversionINTToSTRING(income.getUserId()));
     xml.AddElem("Date",DateManager::conversionINTToDateInString(income.getDate()));
     xml.AddElem("NameOfIncome",income.getNameOfIncome());
@@ -62,7 +62,7 @@ vector <Income> FileWithIncomes::loadTheIncomesOfLoggedUser(int idOfLoggedUser)
             xml.FindChildElem( "OperactionId" );
             operactionIdString = xml.GetChildData();
             operactionId = atoi( xml.GetChildData().c_str() );
-            income.setOperationId(operactionId);
+            income.setOperactionId(operactionId);
 
             xml.FindChildElem( "UserId" );
             userId = atoi( xml.GetChildData().c_str() );
@@ -83,7 +83,7 @@ vector <Income> FileWithIncomes::loadTheIncomesOfLoggedUser(int idOfLoggedUser)
 
             if(userId == idOfLoggedUser)
             {
-                lastUserOperactionId = income.getOperationId();
+                lastUserOperactionId = income.getOperactionId();
                 incomes.push_back(income);
                 //cout << income.getOperationId() << endl;
                 // cout << income.getDate() << endl;

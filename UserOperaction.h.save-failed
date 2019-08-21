@@ -24,12 +24,12 @@ public:
         }
 
     void setUserId(int newUserId);
-    void setOperactionId(int newOperactionId);
+    void setOperationId(int newOperationId);
     void setDate(int newDate);
     void setAmount(float newAmount);
 
     int getUserId();
-    int getOperactionId();
+    int getOperationId();
 	int getDate();
 	float getAmount();
 

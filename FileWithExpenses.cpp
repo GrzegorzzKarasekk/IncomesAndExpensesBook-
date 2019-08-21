@@ -18,7 +18,7 @@ bool FileWithExpenses::addExpenseToFile(Expense expense)
     }
     xml.AddElem("Expense");
     xml.IntoElem();
-    xml.AddElem("OperactionId",AuxiliaryMethods::conversionINTToSTRING(expense.getOperationId()));
+    xml.AddElem("OperactionId",AuxiliaryMethods::conversionINTToSTRING(expense.getOperactionId()));
     xml.AddElem("UserId",AuxiliaryMethods::conversionINTToSTRING(expense.getUserId()));
     xml.AddElem("Date",DateManager::conversionINTToDateInString(expense.getDate()));
     xml.AddElem("NameOfExpense",expense.getNameOfExpense());
@@ -62,7 +62,7 @@ vector <Expense> FileWithExpenses::loadTheExpensesOfLoggedUser(int idOfLoggedUse
             xml.FindChildElem( "OperactionId" );
             operactionIdString = xml.GetChildData();
             operactionId = atoi( xml.GetChildData().c_str() );
-            expense.setOperationId(operactionId);
+            expense.setOperactionId(operactionId);
 
             xml.FindChildElem( "UserId" );
             userId = atoi( xml.GetChildData().c_str() );
@@ -83,7 +83,7 @@ vector <Expense> FileWithExpenses::loadTheExpensesOfLoggedUser(int idOfLoggedUse
 
             if(userId == idOfLoggedUser)
             {
-                lastUserOperactionId = expense.getOperationId();
+                lastUserOperactionId = expense.getOperactionId();
                 expenses.push_back(expense);
                 //cout << income.getOperationId() << endl;
                 // cout << income.getDate() << endl;

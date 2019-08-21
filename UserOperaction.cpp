@@ -5,10 +5,10 @@ void UserOperaction::setUserId(int newUserId)
     if (newUserId >= 0)
         userId = newUserId;
 }
-void UserOperaction::setOperationId(int newOperationId)
+void UserOperaction::setOperactionId(int newOperactionId)
 {
-    if (newOperationId >= 0)
-        operationId = newOperationId;
+    if (newOperactionId >= 0)
+        operactionId = newOperactionId;
 }
 void UserOperaction::setDate(int newDate)
 {
@@ -22,9 +22,9 @@ int UserOperaction::getUserId()
 {
    return userId;
 }
-int UserOperaction::getOperationId()
+int UserOperaction::getOperactionId()
 {
-   return operationId;
+   return operactionId;
 }
 int UserOperaction::getDate()
 {
