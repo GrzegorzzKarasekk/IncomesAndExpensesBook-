@@ -28,9 +28,9 @@ Income BilanceManager::addDataNewIncome()
     char choice;
 
     if(fileWithIncomes.getIdOfLastOperaction() > fileWithExpenses.getIdOfLastOperaction())
-        income.setOperationId((fileWithIncomes.getIdOfLastOperaction()+1));
+        income.setOperactionId((fileWithIncomes.getIdOfLastOperaction()+1));
     else
-        income.setOperationId((fileWithExpenses.getIdOfLastOperaction()+1));
+        income.setOperactionId((fileWithExpenses.getIdOfLastOperaction()+1));
 
     income.setUserId(ID_OF_LOGGED_USER);
 
@@ -89,7 +89,7 @@ void BilanceManager::showAllIncomes()
         cout << "-----------------------------------------------" << endl;
         for (int i = 0; i < incomes.size(); i++)
         {
-            cout << incomes[i].getOperationId() << endl;
+            cout << incomes[i].getOperactionId() << endl;
             cout << incomes[i].getDate() << endl;
             cout << incomes[i].getNameOfIncome() << endl;
             cout << incomes[i].getAmount() << endl;}
@@ -129,9 +129,9 @@ Expense BilanceManager::addDataNewExpense()
     char choice;
 
     if(fileWithExpenses.getIdOfLastOperaction() > fileWithIncomes.getIdOfLastOperaction())
-        expense.setOperationId((fileWithExpenses.getIdOfLastOperaction()+1));
+        expense.setOperactionId((fileWithExpenses.getIdOfLastOperaction()+1));
     else
-        expense.setOperationId((fileWithIncomes.getIdOfLastOperaction()+1));
+        expense.setOperactionId((fileWithIncomes.getIdOfLastOperaction()+1));
 
     expense.setUserId(ID_OF_LOGGED_USER);
 
@@ -188,7 +188,7 @@ void BilanceManager::showAllExpenses()
         cout << "-----------------------------------------------" << endl;
         for (int i = 0; i < expenses.size(); i++)
         {
-            cout << expenses[i].getOperationId() << endl;
+            cout << expenses[i].getOperactionId() << endl;
             cout << expenses[i].getDate() << endl;
             cout << expenses[i].getNameOfExpense() << endl;
             cout << expenses[i].getAmount() << endl;}
@@ -212,8 +212,8 @@ void BilanceManager::showTheBilanceFromThisMonth()
     vector<Income> sortedIncomes(incomes);
     vector<Expense> sortedExpenses(expenses);
 
-    //sort(sortedIncomes.begin(), sortedIncomes.end(), isItSmaller);
-    //sort(sortedExpenses.begin(), sortedExpenses.end(),comparison);
+    sort(sortedIncomes.begin(), sortedIncomes.end());
+    sort(sortedExpenses.begin(), sortedExpenses.end());
 
     cout << "             >>> INCOMES <<<" << endl;
     cout << "-----------------------------------------------" << endl;
@@ -221,7 +221,7 @@ void BilanceManager::showTheBilanceFromThisMonth()
     {
         for (int i = 0; i < sortedIncomes.size(); i++)
         {
-            cout << "ID of Operaction: " << sortedIncomes[i].getOperationId() << endl;
+            cout << "ID of Operaction: " << sortedIncomes[i].getOperactionId() << endl;
             cout << "Date of INCOME: " << DateManager::conversionINTToDateInString(sortedIncomes[i].getDate()) << endl;
             cout << "Name of INCOME: " << sortedIncomes[i].getNameOfIncome() << endl;
             cout << "Amount of INCOME: " << sortedIncomes[i].getAmount() << endl << endl;
@@ -239,7 +239,7 @@ void BilanceManager::showTheBilanceFromThisMonth()
     {
         for (int i = 0; i < sortedExpenses.size(); i++)
         {
-            cout << "ID of Operaction: " << sortedExpenses[i].getOperationId() << endl;
+            cout << "ID of Operaction: " << sortedExpenses[i].getOperactionId() << endl;
             cout << "Date of EXPENSE: " << DateManager::conversionINTToDateInString(sortedExpenses[i].getDate()) << endl;
             cout << "Name of EXPENSE: " << sortedExpenses[i].getNameOfExpense() << endl;
             cout << "Amount of EXPENSE: " << sortedExpenses[i].getAmount() << endl << endl;

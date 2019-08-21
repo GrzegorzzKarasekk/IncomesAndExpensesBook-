@@ -2,8 +2,6 @@
 #define INCOME_H
 
 #include <iostream>
-//#include <tuple>//tie
-
 #include "UserOperaction.h"
 
 using namespace std;
@@ -13,15 +11,18 @@ class Income : public UserOperaction
     string nameOfIncome;
 
 public:
-    Income(string nameOfIncome = "")
-    {
-        this -> nameOfIncome = nameOfIncome;
-    }
+    Income(string nNameOfIncome = "", int nUserId = 0, int nOperactionId = 0,int nDate = 0, float nAmount = 0.0):
+         UserOperaction(nUserId, nOperactionId, nDate, nAmount), nameOfIncome(nNameOfIncome)
+         {
+             this -> nameOfIncome = nNameOfIncome;
+         }
 
     void setNameOfIncome(string newNameOfIncome);
 
     string getNameOfIncome();
-    //friend bool operator<(const Income &s1, const Income &s2);
 };
 
+bool operator<(Income &d1, Income &d2);
+
 #endif
+
