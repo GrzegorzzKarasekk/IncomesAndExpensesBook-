@@ -38,6 +38,8 @@ public:
     void showAllIncomes();
     void addExpense();
     void showTheBilanceFromThisMonth();
+    void showTheBilanceFromPreviousMonth();
+    void showTheBilanceFromPeroid();
 
 };
 
