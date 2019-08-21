@@ -52,12 +52,10 @@ int main()
                 managementOfBilancesBook.showTheBilanceFromThisMonth();
                 break;
             case '4':
-                cout << endl << "This fuction isn't presently available" << endl << endl;
-                system("pause");
+                managementOfBilancesBook.showTheBilanceFromPreviousMonth();
                 break;
             case '5':
-                cout << endl << "This fuction isn't presently available" << endl << endl;
-                system("pause");
+                managementOfBilancesBook.showTheBilanceFromPeroid();
                 break;
             case '6':
                 cout << endl << "This fuction isn't presently available" << endl << endl;

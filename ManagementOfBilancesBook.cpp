@@ -61,6 +61,16 @@ void ManagementOfBilancesBook::showTheBilanceFromThisMonth()
     bilanceManager->showTheBilanceFromThisMonth();
 }
 
+void ManagementOfBilancesBook::showTheBilanceFromPreviousMonth()
+{
+    bilanceManager->showTheBilanceFromPreviousMonth();
+}
+
+void ManagementOfBilancesBook::showTheBilanceFromPeroid()
+{
+    bilanceManager->showTheBilanceFromPeroid();
+}
+
 void ManagementOfBilancesBook::addIncome()
 {
     if( userManager.isTheUserLogged())
