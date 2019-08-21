@@ -200,17 +200,19 @@ void BilanceManager::showAllExpenses()
     system("pause");
 }
 
-
 void BilanceManager::showTheBilanceFromThisMonth()
 {
     system("cls");
 
     double incomesAmount = 0;
     double expensesAmount = 0;
+    int currentlyDate =0;
 
+    currentlyDate = DateManager::conversionDateFromSTRINGToINT(DateManager::getCurrentTime());
 
-    vector<Income> sortedIncomes(incomes);
-    vector<Expense> sortedExpenses(expenses);
+    vector<Income> sortedIncomes(selectingIncomesFromCurrentlyMonth(incomes, currentlyDate));
+    vector<Expense> sortedExpenses(selectingExpensesFromCurrentlyMonth(expenses,currentlyDate));
+
 
     sort(sortedIncomes.begin(), sortedIncomes.end());
     sort(sortedExpenses.begin(), sortedExpenses.end());
@@ -227,6 +229,8 @@ void BilanceManager::showTheBilanceFromThisMonth()
             cout << "Amount of INCOME: " << sortedIncomes[i].getAmount() << endl << endl;
             incomesAmount += sortedIncomes[i].getAmount();
         }
+        cout << "ALL OF AMOUNT INCOMES: " << incomesAmount << endl;
+
     }
     else
     {
@@ -245,13 +249,55 @@ void BilanceManager::showTheBilanceFromThisMonth()
             cout << "Amount of EXPENSE: " << sortedExpenses[i].getAmount() << endl << endl;
             expensesAmount += sortedExpenses[i].getAmount();
         }
+        cout << "ALL OF AMOUNT EXPENSES: " << expensesAmount << endl;
+
     }
     else
     {
         cout << endl << "No Expenses in this Month" << endl << endl;
     }
     cout << "             >>> BALANCE <<<" << endl;
-    cout << "-----------------------------------------------" << endl;
+    cout << "-----------------------------------------------" << endl << endl;
     cout << "BALANCE OF THIS MONTH : " << incomesAmount - expensesAmount << endl << endl;
     system("pause");
 }
+
+vector <Income> BilanceManager::selectingIncomesFromCurrentlyMonth(vector <Income> incomes, int currentlyDate)
+{
+    vector<Income> sortedIncomes;
+    int currentlyMonthDate;
+    currentlyMonthDate= currentlyDate/100;
+    currentlyMonthDate *= 100;
+
+    if (!incomes.empty())
+    {
+        for (int i = 0; i < incomes.size(); i++)
+        {
+            if(incomes[i].getDate() >=currentlyMonthDate && incomes[i].getDate() < (currentlyMonthDate +1000))
+            sortedIncomes.push_back(incomes[i]);
+        }
+    }
+    return sortedIncomes;
+}
+
+vector <Expense> BilanceManager::selectingExpensesFromCurrentlyMonth(vector <Expense> expenses, int currentlyDate)
+{
+    vector<Expense> sortedExpenses;
+    int currentlyMonthDate;
+    currentlyMonthDate= currentlyDate/100;
+    currentlyMonthDate *= 100;
+
+    if (!expenses.empty())
+    {
+        for (int i = 0; i < expenses.size(); i++)
+        {
+            if(expenses[i].getDate() >=currentlyMonthDate && expenses[i].getDate() < (currentlyMonthDate +1000))
+            sortedExpenses.push_back(expenses[i]);
+        }
+    }
+    return sortedExpenses;
+}
+
+
+
+

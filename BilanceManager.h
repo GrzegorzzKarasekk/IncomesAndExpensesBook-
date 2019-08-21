@@ -27,8 +27,10 @@ class BilanceManager
 	Income addDataNewIncome();
     Expense addDataNewExpense();
 
-	void showAllIncomes();
+    void showAllIncomes();
 	void showAllExpenses();
+    vector <Income> selectingIncomesFromCurrentlyMonth(vector <Income> incomes, int currentlyDate);
+    vector <Expense> selectingExpensesFromCurrentlyMonth(vector <Expense> expenses, int currentlyDate);
 
 public:
     BilanceManager(string nameOfFileWithIncomes, string nameOfFileWithExpenses, int idOfLoggedUser )
