@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <vector>
-//#include <fstream>
 #include <cstdlib>
 
 #include "AuxiliaryMethods.h"
@@ -16,12 +15,13 @@ using namespace std;
 
 class FileWithUsers : public XmlFile
 {
+    bool isThisSamePassword(string password);
 
 public:
     FileWithUsers(string nameTheFileWithUsers) : XmlFile(nameTheFileWithUsers) {};
     void addUserOnToFile(User user);
     vector <User> loadUsersFromTheFile();
-    //void zapiszWszystkichUzytkownikowDoPliku(vector <Uzytkownik> &uzytkownicy);
+    void changeThePassword(int idLoggedUser);
 
 };
 

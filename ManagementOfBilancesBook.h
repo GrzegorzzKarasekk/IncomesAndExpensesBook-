@@ -40,6 +40,7 @@ public:
     void showTheBilanceFromThisMonth();
     void showTheBilanceFromPreviousMonth();
     void showTheBilanceFromPeroid();
+    void changeTheUserPassword();
 
 };
 
