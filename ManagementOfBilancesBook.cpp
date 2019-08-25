@@ -95,3 +95,8 @@ void ManagementOfBilancesBook::addExpense()
     }
 }
 
+void ManagementOfBilancesBook::changeTheUserPassword()
+{
+    userManager.changeUserPassword();
+}
+

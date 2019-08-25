@@ -74,70 +74,62 @@ vector <User> FileWithUsers::loadUsersFromTheFile()
 
     }
 }
-/*
-Uzytkownik PlikZUzytkownikami::pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami)
+
+void FileWithUsers::changeThePassword(int idLoggedUser)
 {
-    Uzytkownik uzytkownik;
-    string pojedynczaDanaUzytkownika = "";
-    int numerPojedynczejDanejUzytkownika = 1;
+    CMarkup xml;
+    User user;
 
-    for (int pozycjaZnaku = 0; pozycjaZnaku < daneJednegoUzytkownikaOddzielonePionowymiKreskami.length(); pozycjaZnaku++)
+    int idOfCheckUser = 0;
+    string password = "";
+
+    bool fileExist = xml.Load("users.xml");
+    if(!fileExist)
     {
-        if (daneJednegoUzytkownikaOddzielonePionowymiKreskami[pozycjaZnaku] != '|')
-        {
-            pojedynczaDanaUzytkownika += daneJednegoUzytkownikaOddzielonePionowymiKreskami[pozycjaZnaku];
-        }
-        else
-        {
-            switch(numerPojedynczejDanejUzytkownika)
-            {
-            case 1:
-                uzytkownik.ustawId(atoi(pojedynczaDanaUzytkownika.c_str()));
-                break;
-            case 2:
-                uzytkownik.ustawLogin(pojedynczaDanaUzytkownika);
-                break;
-            case 3:
-                uzytkownik.ustawHaslo(pojedynczaDanaUzytkownika);
-                break;
-            }
-            pojedynczaDanaUzytkownika = "";
-            numerPojedynczejDanejUzytkownika++;
-        }
-    }
-    return uzytkownik;
-}
-
-
-void PlikZUzytkownikami::zapiszWszystkichUzytkownikowDoPliku(vector <Uzytkownik> &uzytkownicy)
-{
-    fstream plikTekstowy;
-    string liniaZDanymiUzytkownika = "";
-    vector <Uzytkownik>::iterator itrKoniec = --uzytkownicy.end();
-
-    plikTekstowy.open(pobierzNazwePliku().c_str(), ios::out);
-
-    if (plikTekstowy.good() == true)
-    {
-        for (vector <Uzytkownik>::iterator itr = uzytkownicy.begin(); itr != uzytkownicy.end(); itr++)
-        {
-            liniaZDanymiUzytkownika = zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(*itr);
-
-            if (itr == itrKoniec)
-            {
-               plikTekstowy << liniaZDanymiUzytkownika;
-            }
-            else
-            {
-                plikTekstowy << liniaZDanymiUzytkownika << endl;
-            }
-            liniaZDanymiUzytkownika = "";
-        }
+        cout << endl << "The file users.xml don't exist. No users :( " << endl;
+        system("pause");
     }
     else
     {
-        cout << "Nie mozna otworzyc pliku " << pobierzNazwePliku() << endl;
+        while(xml.FindChildElem("User"))
+        {
+            xml.IntoElem();
+            xml.FindChildElem( "UserId" );
+            idOfCheckUser = atoi( xml.GetChildData().c_str() );
+
+            if( idOfCheckUser ==  idLoggedUser)
+            {
+                do
+                {
+                    cout << "SET PASSWORD: ";
+                    password = AuxiliaryMethods::loadTheLine();
+                    user.setPassword(password);
+                }
+                while (isThisSamePassword(password) == false);
+
+                xml.FindChildElem("Password");
+                xml.SetChildData(user.getPassword());
+
+                xml.Save("users.xml");
+            }
+        }
+    cout << endl << "The password was changed successfully :D " << endl;
+    system("pause");
     }
-    plikTekstowy.close();
 }
-*/
+
+bool FileWithUsers::isThisSamePassword(string password)
+{
+    string password2 = "";
+    cout << "RAPEAT THE PASSWORD: ";
+
+    password2 = AuxiliaryMethods::loadTheLine();
+
+    if(password != password2)
+        {
+            cout << endl << "Passwords are different!!!" << endl;
+            return false;
+        }
+    else
+        return true;
+}

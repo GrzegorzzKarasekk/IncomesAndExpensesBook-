@@ -36,6 +36,7 @@ public:
     bool isTheUserLogged();
     bool isTheVectorOfUsersEmpty();
     int getIdOfLoggedUser();
+    void changeUserPassword();
 
 };
 

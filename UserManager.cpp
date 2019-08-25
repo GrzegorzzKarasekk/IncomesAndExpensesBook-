@@ -198,3 +198,12 @@ int UserManager::getIdOfLoggedUser()
 {
     return idOfLoggedUser;
 }
+
+
+void UserManager::changeUserPassword()
+{
+    fileWithUsers.changeThePassword(idOfLoggedUser);
+    users.clear();
+    users = fileWithUsers.loadUsersFromTheFile();
+}
+

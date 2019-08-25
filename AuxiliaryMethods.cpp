@@ -49,7 +49,6 @@ string AuxiliaryMethods::conversionDOUBLEToSTRING(double numberDouble)
     stringstream stream;
     stream << std::fixed << setprecision(2) << numberDouble;
     string str = stream.str();
-        // print results
     return str;
 }
 
@@ -63,7 +62,6 @@ double AuxiliaryMethods::conversionSTRINGToDOUBLE(string text)
     numberDouble = precisionToTwoDecimalPlaces(numberDouble);
     if(isstream.fail())
     {
-        // handle errors
         cout << "Error while converting string to double" << endl;
         cout << "Set correct amount (For example 20.25)" << endl;
         cin >> text2;
@@ -71,7 +69,6 @@ double AuxiliaryMethods::conversionSTRINGToDOUBLE(string text)
         conversionSTRINGToDOUBLE(text2);
     }
     else
-        // print results
         return numberDouble;
 }
 
@@ -82,10 +79,6 @@ double AuxiliaryMethods::precisionToTwoDecimalPlaces(double numberDouble)
 
 int AuxiliaryMethods::conversionSTRINGToINT(string text)
 {
-    //int numberInt;
-    //numberInt = atoi(text.c_str());
-
-    //return numberInt;
     int numberInt;
 	istringstream iss(text);
     iss >> numberInt;
@@ -107,36 +100,3 @@ string AuxiliaryMethods::findAndChangeCommaToPeroidInText(string text)
 		return text;
     }
 }
-
-/*
-string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku)
-{
-    string liczba = "";
-    while(isdigit(tekst[pozycjaZnaku]) == true)
-    {
-        liczba += tekst[pozycjaZnaku];
-        pozycjaZnaku ++;
-    }
-    return liczba;
-}
-*/
-
-
-/*
-int MetodyPomocnicze::wczytajLiczbeCalkowita()
-{
-    string wejscie = "";
-    int liczba = 0;
-
-    while (true)
-    {
-        getline(cin, wejscie);
-
-        stringstream myStream(wejscie);
-        if (myStream >> liczba)
-            break;
-        cout << "To nie jest liczba. Wpisz ponownie. " << endl;
-    }
-    return liczba;
-}
-*/

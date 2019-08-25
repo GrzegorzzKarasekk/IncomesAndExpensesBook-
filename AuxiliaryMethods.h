@@ -24,8 +24,6 @@ public:
     static double precisionToTwoDecimalPlaces(double numberDouble);
     static string findAndChangeCommaToPeroidInText( string text);
     static string conversionDOUBLEToSTRING(double number);
-    //static string pobierzLiczbe(string tekst, int pozycjaZnaku);
-    //static int wczytajLiczbeCalkowita();
 
 };
 

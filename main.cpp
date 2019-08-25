@@ -66,8 +66,7 @@ int main()
                 system("pause");
                 break;
             case '8':
-                cout << endl << "This fuction isn't presently available" << endl << endl;
-                system("pause");
+                managementOfBilancesBook.changeTheUserPassword();
                 break;
             case '9':
                 managementOfBilancesBook.logOffTheUser();

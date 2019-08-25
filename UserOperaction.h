@@ -1,6 +1,5 @@
 #ifndef USEROPERACTION_H
 #define USEROPERACTION_H
-//#include <>
 #include <iostream>
 
 using namespace std;
