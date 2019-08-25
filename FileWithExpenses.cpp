@@ -25,7 +25,7 @@ bool FileWithExpenses::addExpenseToFile(Expense expense)
     xml.AddElem("Amount",AuxiliaryMethods::conversionDOUBLEToSTRING(expense.getAmount()));
     if(xml.Save("expenses.xml"))
     {
-        idOfLastOperaction ++;
+        idOfLastExpenseOperaction ++;
         return true;
     }
     else
@@ -43,7 +43,7 @@ vector <Expense> FileWithExpenses::loadTheExpensesOfLoggedUser(int idOfLoggedUse
     bool fileExist = xml.Load("expenses.xml");
     if(!fileExist)
     {
-        cout << endl << "The file expenses.xml don't exist or is empty. No incomes, but you can add ;) " << endl;
+        cout << endl << "The file expenses.xml don't exist or is empty. No expenses, but you can add ;) " << endl;
         system("pause");
     }
     else
@@ -85,26 +85,20 @@ vector <Expense> FileWithExpenses::loadTheExpensesOfLoggedUser(int idOfLoggedUse
             {
                 lastUserOperactionId = expense.getOperactionId();
                 expenses.push_back(expense);
-                //cout << income.getOperationId() << endl;
-                // cout << income.getDate() << endl;
-                //cout << income.getNameOfIncome() << endl;
-                //cout << income.getAmount() << endl;
             }
             xml.OutOfElem();
         }
 
         if (operactionIdString != "")
         {
-            idOfLastOperaction = lastUserOperactionId;
-            //cout <<"idOfLastOperaction " <<idOfLastOperaction << endl;
-            //system("pause");
+            idOfLastExpenseOperaction = lastUserOperactionId;
         }
     }
 
     return expenses;
 }
 
-int FileWithExpenses::getIdOfLastOperaction()
+int FileWithExpenses::getIdOfLastExpenseOperaction()
 {
-    return idOfLastOperaction;
+    return idOfLastExpenseOperaction;
 }
