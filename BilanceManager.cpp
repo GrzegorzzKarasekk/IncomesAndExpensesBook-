@@ -27,10 +27,7 @@ Income BilanceManager::addDataNewIncome()
     double amount;
     char choice;
 
-    if(fileWithIncomes.getIdOfLastOperaction() > fileWithExpenses.getIdOfLastOperaction())
-        income.setOperactionId((fileWithIncomes.getIdOfLastOperaction()+1));
-    else
-        income.setOperactionId((fileWithExpenses.getIdOfLastOperaction()+1));
+    income.setOperactionId((fileWithIncomes.getIdOfLastIncomeOperaction()+1));
 
     income.setUserId(ID_OF_LOGGED_USER);
 
@@ -129,10 +126,7 @@ Expense BilanceManager::addDataNewExpense()
     double amount;
     char choice;
 
-    if(fileWithExpenses.getIdOfLastOperaction() > fileWithIncomes.getIdOfLastOperaction())
-        expense.setOperactionId((fileWithExpenses.getIdOfLastOperaction()+1));
-    else
-        expense.setOperactionId((fileWithIncomes.getIdOfLastOperaction()+1));
+    expense.setOperactionId((fileWithExpenses.getIdOfLastExpenseOperaction()+1));
 
     expense.setUserId(ID_OF_LOGGED_USER);
 

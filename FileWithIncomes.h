@@ -15,15 +15,15 @@ using namespace std;
 class FileWithIncomes : public XmlFile
 {
 
-    int idOfLastOperaction;
+    int idOfLastIncomeOperaction;
 
 public:
     FileWithIncomes(string nameOfFileWithIncomes) : XmlFile(nameOfFileWithIncomes) {
-    idOfLastOperaction = 0;
+    idOfLastIncomeOperaction = 0;
     };
     bool addIncomeToFile(Income income);
     vector <Income> loadTheIncomesOfLoggedUser(int idOfLoggedUser);
-    int getIdOfLastOperaction();
+    int getIdOfLastIncomeOperaction();
 };
 
 #endif
