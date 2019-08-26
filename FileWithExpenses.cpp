@@ -83,15 +83,13 @@ vector <Expense> FileWithExpenses::loadTheExpensesOfLoggedUser(int idOfLoggedUse
 
             if(userId == idOfLoggedUser)
             {
-                lastUserOperactionId = expense.getOperactionId();
                 expenses.push_back(expense);
             }
             xml.OutOfElem();
         }
-
         if (operactionIdString != "")
         {
-            idOfLastExpenseOperaction = lastUserOperactionId;
+            idOfLastExpenseOperaction = expense.getOperactionId();
         }
     }
 

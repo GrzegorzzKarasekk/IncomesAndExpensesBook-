@@ -49,7 +49,6 @@ vector <Income> FileWithIncomes::loadTheIncomesOfLoggedUser(int idOfLoggedUser)
     else
     {
         int userId = 0;
-        int lastUserOperactionId = 0;
         int operactionId = 0;
         int date = 0;
         string nameOfIncome = "", operactionIdString = "";
@@ -83,18 +82,15 @@ vector <Income> FileWithIncomes::loadTheIncomesOfLoggedUser(int idOfLoggedUser)
 
             if(userId == idOfLoggedUser)
             {
-                lastUserOperactionId = income.getOperactionId();
                 incomes.push_back(income);
             }
             xml.OutOfElem();
         }
-
         if (operactionIdString != "")
         {
-            idOfLastIncomeOperaction = lastUserOperactionId;
+            idOfLastIncomeOperaction = income.getOperactionId();
         }
     }
-
     return incomes;
 }
 
