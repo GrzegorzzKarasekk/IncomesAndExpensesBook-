@@ -202,8 +202,10 @@ int UserManager::getIdOfLoggedUser()
 
 void UserManager::changeUserPassword()
 {
-    fileWithUsers.changeThePassword(idOfLoggedUser);
-    users.clear();
-    users = fileWithUsers.loadUsersFromTheFile();
+    string newPassword = "";
+    newPassword = fileWithUsers.changeThePassword(idOfLoggedUser);
+    users[idOfLoggedUser - 1].setPassword(newPassword);
+    cout << endl << "The password was changed successfully :D " << endl;
+    system("pause");
 }
 

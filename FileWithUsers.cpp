@@ -75,7 +75,7 @@ vector <User> FileWithUsers::loadUsersFromTheFile()
     }
 }
 
-void FileWithUsers::changeThePassword(int idLoggedUser)
+string FileWithUsers::changeThePassword(int idLoggedUser)
 {
     CMarkup xml;
     User user;
@@ -113,8 +113,7 @@ void FileWithUsers::changeThePassword(int idLoggedUser)
                 xml.Save("users.xml");
             }
         }
-    cout << endl << "The password was changed successfully :D " << endl;
-    system("pause");
+        return password;
     }
 }
 
@@ -126,10 +125,10 @@ bool FileWithUsers::isThisSamePassword(string password)
     password2 = AuxiliaryMethods::loadTheLine();
 
     if(password != password2)
-        {
-            cout << endl << "Passwords are different!!!" << endl;
-            return false;
-        }
+    {
+        cout << endl << "Passwords are different!!!" << endl;
+        return false;
+    }
     else
         return true;
 }
