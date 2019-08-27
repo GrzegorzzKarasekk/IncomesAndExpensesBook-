@@ -48,7 +48,12 @@ bool ManagementOfBilancesBook::isTheVectorOfUsersEmpty()
 
 char ManagementOfBilancesBook::choseTheOptionFromTheUserMenu()
 {
-    return userManager.choseTheOptionFromTheUserMenu();
+    return userManager.chooseTheOptionFromTheUserMenu();
+}
+
+char ManagementOfBilancesBook::choseTheOptionFromTheEditMenu()
+{
+    bilanceManager->editTheOperaction();
 }
 
 void ManagementOfBilancesBook::logOffTheUser()

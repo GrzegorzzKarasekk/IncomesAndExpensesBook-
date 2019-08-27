@@ -24,6 +24,9 @@ public:
     bool addExpenseToFile(Expense expense);
     vector <Expense> loadTheExpensesOfLoggedUser(int idOfLoggedUser);
     int getIdOfLastExpenseOperaction();
+    void changeTheChoosenExpense(Expense expense);
+    void removeExpenseFromFile(Expense expense);
+
 };
 
 #endif

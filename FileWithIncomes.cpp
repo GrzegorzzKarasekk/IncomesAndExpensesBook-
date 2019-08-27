@@ -98,3 +98,74 @@ int FileWithIncomes::getIdOfLastIncomeOperaction()
 {
     return idOfLastIncomeOperaction;
 }
+
+void FileWithIncomes::changeTheChoosenIncome(Income income)
+{
+    CMarkup xml;
+    bool fileExist = xml.Load("incomes.xml");
+    int operactionId = 0;
+    string amountString = "", operactionIdString = "", dateString = "";
+
+
+    if(!fileExist)
+    {
+        cout << endl << "The file incomes.xml don't exist or is empty " << endl;
+        system("pause");
+    }
+    else
+    {
+        while(xml.FindChildElem("Income"))
+        {
+            xml.IntoElem();
+            xml.FindChildElem( "OperactionId" );
+            operactionId = atoi( xml.GetChildData().c_str() );
+
+            if(income.getOperactionId() == operactionId)
+            {
+                xml.FindChildElem("Date");
+                dateString = DateManager::conversionINTToDateInString(income.getDate());
+                xml.SetChildData(dateString);
+
+                xml.FindChildElem("NameOfIncome");
+                xml.SetChildData(income.getNameOfIncome());
+
+                xml.FindChildElem("Amount");
+                amountString = AuxiliaryMethods::conversionDOUBLEToSTRING(income.getAmount());
+                xml.SetChildData(amountString);
+
+                xml.Save("incomes.xml");
+            }
+            xml.OutOfElem();
+        }
+    }
+}
+
+void FileWithIncomes::removeIncomeFromFile(Income income)
+{
+    CMarkup xml;
+    bool fileExist = xml.Load("incomes.xml");
+    if(!fileExist)
+    {
+        cout << endl << "The file incomes.xml don't exist or is empty " << endl;
+        system("pause");
+    }
+    else
+    {
+        int operactionId = 0;
+        double amount;
+
+        while(xml.FindChildElem("Income"))
+        {
+            xml.IntoElem();
+            xml.FindChildElem( "OperactionId" );
+            operactionId = atoi( xml.GetChildData().c_str() );
+
+            if(income.getOperactionId() == operactionId)
+            {
+                xml.RemoveElem();
+                xml.Save("incomes.xml");
+            }
+            xml.OutOfElem();
+        }
+    }
+}

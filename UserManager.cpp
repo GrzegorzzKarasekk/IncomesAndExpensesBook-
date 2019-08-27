@@ -170,7 +170,7 @@ bool UserManager::isTheVectorOfUsersEmpty()
         return false;
 }
 
-char UserManager::choseTheOptionFromTheUserMenu()
+char UserManager::chooseTheOptionFromTheUserMenu()
 {
     char choice;
 
@@ -182,8 +182,7 @@ char UserManager::choseTheOptionFromTheUserMenu()
     cout << "3. SHOW THE BILANCE FROM THIS MONTH" << endl;
     cout << "4. SHOW THE BILANCE FROM PREVIOUS MONTH" << endl;
     cout << "5. SHOW THE BILANCE FROM PEROID" << endl;
-    cout << "6. EDIT THE INCOME" << endl;
-    cout << "7. EDIT THE EXPENSE" << endl;
+    cout << "6. EDIT/REMOVE THE OPERACTION" << endl;
     cout << "---------------------------" << endl;
     cout << "8. CHANGE THE PASSWORD" << endl;
     cout << "9. LOG OFF" << endl;
