@@ -434,11 +434,9 @@ vector <Income> BilanceManager::selectingIncomesFromVector(vector <Income> incom
         if(currentStringDate[5] == 0 && currentStringDate[6] == 1 )
         {
             previousMonthDate = currentMonthDate - 8900;
-            previousMonthDate +=1;
         }
         else
             previousMonthDate = currentMonthDate - 100;
-        previousMonthDate +=1;
 
         if (!incomes.empty())
         {
@@ -498,13 +496,11 @@ vector <Expense> BilanceManager::selectingExpensesFromVector(vector <Expense> ex
         currentStringDate = DateManager::conversionINTToDateInString(currentDate);
         if(currentStringDate[5] == 0 && currentStringDate[6] == 1 )
         {
-            previousMonthDate = currentDate - 8900;
-            previousMonthDate +=1;
+            previousMonthDate = currentMonthDate - 8900;
         }
         else
         {
-            previousMonthDate = currentDate - 100;
-            previousMonthDate +=1;
+            previousMonthDate = currentMonthDate - 100;
         }
 
         if (!expenses.empty())
