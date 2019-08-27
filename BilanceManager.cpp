@@ -16,7 +16,6 @@ void BilanceManager::addIncome()
     system("pause");
 }
 
-
 Income BilanceManager::addDataNewIncome()
 {
     Income income;
@@ -537,6 +536,261 @@ else
     system("pause");
         return selectedExpenses;
     }
+}
+
+char BilanceManager::chooseTheOptionFromTheEditMenu()
+{
+    char choise;
+
+    cout << endl << " >>> EDIT MENU <<<" << endl;
+    cout << "---------------------------" << endl;
+    cout << "Which data do you want to update? " << endl;
+    cout << "1 - Date of Operaction" << endl;
+    cout << "2 - Name of Operaction" << endl;
+    cout << "3 - Amount of Operaction" << endl;
+    cout << "---------------------------" << endl;
+	cout << "6 - Delete Operaction" << endl;
+    cout << "---------------------------" << endl;
+	cout << "9 - Return to user Menu " << endl;
+    cout << endl << "Your choice: ";
+    choise = AuxiliaryMethods::loadTheSign();
+
+    return choise;
+}
+
+void BilanceManager::editTheOperaction()
+{
+
+    system("cls");
+    int idOffEditedOperaction = 0;
+    int currentINTDate = 0;
+    string currentDate = "";
+    Expense expense;
+    char choosenOperaction;
+    bool isTheOprectionExist = false;
+
+    currentDate = DateManager::getCurrentTime();
+    currentINTDate = DateManager::conversionDateFromSTRINGToINT(currentDate);
+
+    cout << ">>> EDITED CHOOSEN OPERACTION <<<" << endl << endl;
+    idOffEditedOperaction = setIdOfEditedOperaction();
+
+    do
+    {
+        cout << "If is the Income Operaction choose <<i>>, if is the Expense Operaction choose <<e>> " << endl;
+        choosenOperaction = AuxiliaryMethods::loadTheSign();
+    }while(!(choosenOperaction == 'i' || choosenOperaction == 'e'));
+
+
+    if(choosenOperaction =='i')
+        isTheOprectionExist = changeTheIncomeOperaction(idOffEditedOperaction, currentINTDate, isTheOprectionExist);
+    else if(choosenOperaction =='e')
+        isTheOprectionExist = changeTheExpenseOperaction(idOffEditedOperaction, currentINTDate, isTheOprectionExist);
+
+    if (isTheOprectionExist == false)
+    {
+        cout << endl << "The operation doesn't exist" << endl << endl;
+        system("pause");
+    }
+
+}
+
+int BilanceManager::setIdOfEditedOperaction()
+{
+    int idOfEditedOperaction = 0;
+    cout << "Set Id Of Edited Operaction: ";
+    idOfEditedOperaction  = AuxiliaryMethods::loadInteger();
+    return idOfEditedOperaction;
+}
+
+void BilanceManager::showTheIncome(Income income)
+{
+    cout << endl << "Id of Income: " << income.getOperactionId() << endl;
+    cout << "Date of Income: " << DateManager::conversionINTToDateInString(income.getDate()) << endl;
+    cout << "Name of Income: " << income.getNameOfIncome() << endl;
+    cout << "Amount of Income: " << income.getAmount() << endl;
+}
+
+void BilanceManager::showTheExpense(Expense expense)
+{
+    cout << endl << "Id of Expense:" << expense.getOperactionId() << endl;
+    cout << "Date of Expense: " << DateManager::conversionINTToDateInString(expense.getDate()) << endl;
+    cout << "Name of Expense: " << expense.getNameOfExpense() << endl;
+    cout << "Amount of Expense: " << expense.getAmount()<< endl;
+}
+
+char BilanceManager::selectAnOptionFromTheEditMenu()
+{
+    char choise;
+
+    cout << endl << " >>> EDIT MENU <<<" << endl;
+    cout << "---------------------------" << endl;
+    cout << "Which data do you want to update? " << endl;
+    cout << "1 - Date of Operaction" << endl;
+    cout << "2 - Name of Operaction" << endl;
+    cout << "3 - Amount of Operaction" << endl;
+    cout << "---------------------------" << endl;
+	cout << "6 - Delete Operaction" << endl;
+    cout << "---------------------------" << endl;
+	cout << "9 - Exit " << endl;
+    cout << endl << "Your choice: ";
+    choise = AuxiliaryMethods::loadTheSign();
+
+    return choise;
+}
+
+bool BilanceManager::changeTheIncomeOperaction(int idOffEditedOperaction, int currentINTDate, bool isTheOprectionExist)
+{
+    Income income;
+    int date = 0;
+    char choise;
+    string dateString = "", nameOfIncome = "", amountString = "";
+    double amount = 0;
+
+    for (int i = 0; i < incomes.size(); i++)
+    {
+        if (incomes[i].getOperactionId() == idOffEditedOperaction)
+        {
+            system("cls");
+            cout << ">>> EDITED CHOOSEN INCOME <<<" << endl << endl;
+            isTheOprectionExist = true;
+            income = incomes[i];
+            showTheIncome(income);
+            choise = selectAnOptionFromTheEditMenu();
+
+            switch (choise)
+            {
+            case '1':
+                cout << "Set new date of Income (YYYY-MM-DD): ";
+                dateString = AuxiliaryMethods::loadTheLine();
+                while(!DateManager::isTheDateGood(dateString, currentINTDate))
+                {
+                    cout << "Set date(YYYY-MM-DD): ";
+                    dateString = AuxiliaryMethods::loadTheLine();
+                }
+                date = DateManager::conversionDateFromSTRINGToINT(dateString);
+                income.setDate(date);
+                fileWithIncomes.changeTheChoosenIncome(income);
+                incomes[i] = income;
+                cout << endl << "The income has been edited" << endl << endl;
+                system("pause");
+                break;
+            case '2':
+                cout << "Set new name of Income: ";
+                nameOfIncome = AuxiliaryMethods::loadTheLine();
+                nameOfIncome = AuxiliaryMethods::changeTheFirstLetterToCapitalAndTheRestToLower(nameOfIncome);
+                income.setNameOfIncome(nameOfIncome);
+                fileWithIncomes.changeTheChoosenIncome(income);
+                incomes[i] = income;
+                cout << endl << "The income has been edited" << endl << endl;
+                system("pause");
+                break;
+            case '3':
+                cout << "Set new amount of Income: ";
+                amountString = AuxiliaryMethods::loadTheLine();
+                amount = AuxiliaryMethods::conversionSTRINGToDOUBLE(amountString);
+                income.setAmount(amount);
+                fileWithIncomes.changeTheChoosenIncome(income);
+                incomes[i] = income;
+                cout << endl << "The income has been edited" << endl << endl;
+                system("pause");
+                break;
+            case '6':
+                cout << "Remove this Operaction " <<endl;
+                fileWithIncomes.removeIncomeFromFile(income);
+                incomes.erase(incomes.begin()+i);
+                cout << endl << "The income has been removed" << endl << endl;
+                system("pause");
+                break;
+            case '9':
+                cout << endl << "Return to user menu" << endl << endl;
+                system("pause");
+                break;
+            default:
+                cout << endl << "This option not exist in this menu. Return to user menu"  << endl << endl;
+                system("pause");
+                break;
+            }
+        }
+    }
+    return isTheOprectionExist;
+}
+
+bool BilanceManager::changeTheExpenseOperaction(int idOffEditedOperaction, int currentINTDate, bool isTheOprectionExist)
+{
+    Expense expense;
+    int date = 0;
+    char choise;
+    string dateString = "", nameOfExpense = "", amountString = "";
+    double amount = 0;
+
+    for (int i = 0; i < expenses.size(); i++)
+    {
+        if (expenses[i].getOperactionId() == idOffEditedOperaction)
+        {
+            system("cls");
+            cout << ">>> EDITED CHOOSEN EXPENSE <<<" << endl << endl;
+            isTheOprectionExist = true;
+            expense = expenses[i];
+            showTheExpense(expense);
+            choise = selectAnOptionFromTheEditMenu();
+
+            switch (choise)
+            {
+            case '1':
+                cout << "Set new date of Expense (YYYY-MM-DD): ";
+                dateString = AuxiliaryMethods::loadTheLine();
+                while(!DateManager::isTheDateGood(dateString, currentINTDate))
+                {
+                    cout << "Set date(YYYY-MM-DD): ";
+                    dateString = AuxiliaryMethods::loadTheLine();
+                }
+                date = DateManager::conversionDateFromSTRINGToINT(dateString);
+                expense.setDate(date);
+                fileWithExpenses.changeTheChoosenExpense(expense);
+                expenses[i] = expense;
+                cout << endl << "The expense has been edited" << endl << endl;
+                system("pause");
+                break;
+            case '2':
+                cout << "Set new name of Expense: ";
+                nameOfExpense = AuxiliaryMethods::loadTheLine();
+                nameOfExpense = AuxiliaryMethods::changeTheFirstLetterToCapitalAndTheRestToLower(nameOfExpense);
+                expense.setNameOfExpense(nameOfExpense);
+                fileWithExpenses.changeTheChoosenExpense(expense);
+                expenses[i] = expense;
+                cout << endl << "The expense has been edited" << endl << endl;
+                system("pause");
+                break;
+            case '3':
+                cout << "Set new amount of Expense: ";
+                amountString = AuxiliaryMethods::loadTheLine();
+                amount = AuxiliaryMethods::conversionSTRINGToDOUBLE(amountString);
+                expense.setAmount(amount);
+                fileWithExpenses.changeTheChoosenExpense(expense);
+                expenses[i] = expense;
+                cout << endl << "The expense has been edited" << endl << endl;
+                system("pause");
+                break;
+            case '6':
+                cout << "Remove this Operaction ";
+                fileWithExpenses.removeExpenseFromFile(expense);
+                expenses.erase(expenses.begin()+i);
+                cout << endl << "The expense has been removed" << endl << endl;
+                system("pause");
+                break;
+            case '9':
+                cout << endl << "Return to user menu" << endl << endl;
+                system("pause");
+                break;
+            default:
+                cout << endl << "This option not exist in this menu. Return to user menu"  << endl << endl;
+                system("pause");
+                break;
+            }
+        }
+    }
+    return isTheOprectionExist;
 }
 
 

@@ -58,12 +58,7 @@ int main()
                 managementOfBilancesBook.showTheBilanceFromPeroid();
                 break;
             case '6':
-                cout << endl << "This fuction isn't presently available" << endl << endl;
-                system("pause");
-                break;
-            case '7':
-                cout << endl << "This fuction isn't presently available" << endl << endl;
-                system("pause");
+                managementOfBilancesBook.choseTheOptionFromTheEditMenu();
                 break;
             case '8':
                 managementOfBilancesBook.changeTheUserPassword();

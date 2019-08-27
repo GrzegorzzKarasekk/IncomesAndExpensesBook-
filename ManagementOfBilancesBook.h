@@ -34,6 +34,7 @@ public:
     bool isTheUserLogged();
     bool isTheVectorOfUsersEmpty();
     char choseTheOptionFromTheUserMenu();
+    char choseTheOptionFromTheEditMenu();
     void addIncome();
     void showAllIncomes();
     void addExpense();

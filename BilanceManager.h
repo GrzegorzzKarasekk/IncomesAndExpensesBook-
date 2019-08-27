@@ -31,6 +31,13 @@ class BilanceManager
 	void showAllExpenses();
     vector <Income> selectingIncomesFromVector(vector <Income> incomes, int currentDate, char choice, int beginningOfThePeriod, int endOfPeriod);
     vector <Expense> selectingExpensesFromVector(vector <Expense> expenses, int currentDate, char choice, int beginningOfThePeriod, int endOfPeriod);
+    char chooseTheOptionFromTheEditMenu();
+    int setIdOfEditedOperaction();
+    void showTheIncome(Income income);
+    void showTheExpense(Expense expense);
+    char selectAnOptionFromTheEditMenu();
+    bool changeTheIncomeOperaction(int idOffEditedOperaction, int currentINTDate, bool isTheOprectionExist);
+    bool changeTheExpenseOperaction(int idOffEditedOperaction, int currentINTDate, bool isTheOprectionExist);
 
 public:
     BilanceManager(string nameOfFileWithIncomes, string nameOfFileWithExpenses, int idOfLoggedUser )
@@ -44,6 +51,7 @@ public:
     void showTheBilanceFromThisMonth();
     void showTheBilanceFromPreviousMonth();
     void showTheBilanceFromPeroid();
+    void editTheOperaction();
 };
 
 #endif

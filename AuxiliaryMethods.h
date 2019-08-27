@@ -24,6 +24,7 @@ public:
     static double precisionToTwoDecimalPlaces(double numberDouble);
     static string findAndChangeCommaToPeroidInText( string text);
     static string conversionDOUBLEToSTRING(double number);
+    static int loadInteger();
 
 };
 

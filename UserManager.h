@@ -32,7 +32,7 @@ public:
     void userLogging();
     void logOffTheUser();
     void showAllUsers();
-    char choseTheOptionFromTheUserMenu();
+    char chooseTheOptionFromTheUserMenu();
     bool isTheUserLogged();
     bool isTheVectorOfUsersEmpty();
     int getIdOfLoggedUser();

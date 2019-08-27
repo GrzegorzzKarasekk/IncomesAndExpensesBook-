@@ -100,3 +100,74 @@ int FileWithExpenses::getIdOfLastExpenseOperaction()
 {
     return idOfLastExpenseOperaction;
 }
+
+void FileWithExpenses::changeTheChoosenExpense(Expense expense)
+{
+    CMarkup xml;
+    bool fileExist = xml.Load("expenses.xml");
+    int operactionId = 0;
+    string dateString = "", amountString = "";
+
+
+    if(!fileExist)
+    {
+        cout << endl << "The file expenses.xml don't exist or is empty " << endl;
+        system("pause");
+    }
+    else
+    {
+        while(xml.FindChildElem("Expense"))
+        {
+            xml.IntoElem();
+            xml.FindChildElem( "OperactionId" );
+            operactionId = atoi( xml.GetChildData().c_str() );
+
+            if(expense.getOperactionId() == operactionId)
+            {
+                xml.FindChildElem("Date");
+                dateString = DateManager::conversionINTToDateInString(expense.getDate());
+                xml.SetChildData(dateString);
+
+                xml.FindChildElem("NameOfIncome");
+                xml.SetChildData(expense.getNameOfExpense());
+
+                xml.FindChildElem("Amount");
+                amountString = AuxiliaryMethods::conversionDOUBLEToSTRING(expense.getAmount());
+                xml.SetChildData(amountString);
+
+                xml.Save("expenses.xml");
+            }
+            xml.OutOfElem();
+        }
+    }
+}
+
+void FileWithExpenses::removeExpenseFromFile(Expense expense)
+{
+    CMarkup xml;
+    bool fileExist = xml.Load("expenses.xml");
+    if(!fileExist)
+    {
+        cout << endl << "The file expenses.xml don't exist or is empty " << endl;
+        system("pause");
+    }
+    else
+    {
+        int operactionId = 0;
+        double amount;
+
+        while(xml.FindChildElem("Expense"))
+        {
+            xml.IntoElem();
+            xml.FindChildElem( "OperactionId" );
+            operactionId = atoi( xml.GetChildData().c_str() );
+
+            if(expense.getOperactionId() == operactionId)
+            {
+                xml.RemoveElem();
+                xml.Save("expenses.xml");
+            }
+            xml.OutOfElem();
+        }
+    }
+}

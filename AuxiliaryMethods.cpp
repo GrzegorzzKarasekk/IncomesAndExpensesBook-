@@ -100,3 +100,20 @@ string AuxiliaryMethods::findAndChangeCommaToPeroidInText(string text)
 		return text;
     }
 }
+
+int AuxiliaryMethods::loadInteger()
+{
+    string integerString = "";
+    int number = 0;
+
+    while (true)
+    {
+        getline(cin, integerString);
+
+        stringstream myStream(integerString);
+        if (myStream >> number)
+            break;
+        cout << "It's not an integer. Try again " << endl;
+    }
+    return number;
+}

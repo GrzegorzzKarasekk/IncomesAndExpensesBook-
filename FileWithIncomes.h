@@ -24,6 +24,8 @@ public:
     bool addIncomeToFile(Income income);
     vector <Income> loadTheIncomesOfLoggedUser(int idOfLoggedUser);
     int getIdOfLastIncomeOperaction();
+    void changeTheChoosenIncome(Income income);
+    void removeIncomeFromFile(Income income);
 };
 
 #endif
